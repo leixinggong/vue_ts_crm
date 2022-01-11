@@ -37,13 +37,24 @@ export default class NetWorkService<T extends ResponseData> {
     )
   }
 
-  request<T>(config: RequestConfig): Promise<T> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  request<T = any>(config: RequestConfig<ResponseData<T>, T>): Promise<T> {
     return new Promise<T>((resolve, reject) => {
+      // 处理请求头配置
+      if (config.interceptors?.requestInterceptor) {
+        config = config.interceptors.requestInterceptor(config)
+      }
+
+      // 处理是否有 show - loading
       this.instance
-        .request<T>(config)
+        .request<ResponseData<T>>(config)
         .then((res) => {
           console.log(res)
-          resolve(res.data)
+          // 处理响应配置
+          if (config.interceptors?.responseInterceptor) {
+            config.interceptors.responseInterceptor(res.data.data)
+          }
+          resolve(res.data.data)
         })
         .catch((err) => {
           console.log(err)

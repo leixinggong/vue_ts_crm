@@ -5,3 +5,5 @@ export const netService = new NetWorkService({
   responseType: 'json',
   timeout: 5000
 })
+
+netService.request({})
