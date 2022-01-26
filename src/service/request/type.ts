@@ -14,10 +14,8 @@ export interface ResponseData<T = any> {
 }
 
 export interface NetworkInterceptor<T> {
-  requestInterceptor: (config: AxiosRequestConfig) => AxiosRequestConfig
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  requestInterceptorCatch: (err: any) => any
-  responseInterceptor: (res: T) => T
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  responseInterceptorCatch: (err: any) => any
+  requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig
+  requestInterceptorCatch?: (err: any) => any | null
+  responseInterceptor?: (res: T) => T
+  responseInterceptorCatch?: (err: any) => any | null
 }

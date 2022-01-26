@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore, useStore } from 'vuex'
 
 export default createStore({
   state: {},
@@ -6,3 +6,5 @@ export default createStore({
   actions: {},
   modules: {}
 })
+
+useStore

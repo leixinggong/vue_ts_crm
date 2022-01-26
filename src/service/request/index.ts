@@ -37,7 +37,6 @@ export default class NetWorkService<T extends ResponseData> {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   request<T = any>(config: RequestConfig<ResponseData<T>, T>): Promise<T> {
     return new Promise<T>((resolve, reject) => {
       // 处理请求头配置

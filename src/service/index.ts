@@ -6,4 +6,26 @@ export const netService = new NetWorkService({
   timeout: 5000
 })
 
-netService.request({})
+// interface UserInfo {
+//   name: string
+//   age: number
+// }
+//
+// export async function foo() {
+//   const a = await netService.request<UserInfo>({
+//     interceptors: {
+//       requestInterceptor(config) {
+//         return config
+//       },
+//       requestInterceptorCatch(_) {
+//         // return err
+//       },
+//       responseInterceptor(res) {
+//         return res
+//       },
+//       responseInterceptorCatch(_) {
+//         // return err
+//       }
+//     }
+//   })
+// }
